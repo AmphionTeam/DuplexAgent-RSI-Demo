@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DuplexAgent-RSI — Recursive Harness Improvement for Full-Duplex Voice Agent Collaboration</title>
+  <meta name="description" content="DuplexAgent keeps a full-duplex model on the live channel and delegates search, reasoning, and coding through six editable harness modules. Duplex-Harness-RSI revises those modules from timed conversations.">
+  <meta name="theme-color" content="#f4f1ea">
+  <meta property="og:title" content="DuplexAgent-RSI">
+  <meta property="og:description" content="Recursive harness improvement for full-duplex voice agent collaboration.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://amphionteam.github.io/DuplexAgent-RSI-Demo/assets/comic.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23343057'/%3E%3Ccircle cx='12' cy='16' r='4' fill='%236d5cae'/%3E%3Ccircle cx='21' cy='16' r='4' fill='%23227f80'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip" href="#demo">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="#top">DuplexAgent-RSI</a>
+    <nav class="nav" aria-label="Page">
+      <a href="#demo">Demo</a>
+      <a href="#overview">Overview</a>
+      <a href="#harness">Harness</a>
+      <a href="#session">Session</a>
+      <a href="#simulator">Simulator</a>
+      <a href="#results">Results</a>
+      <a href="#rsi">RSI</a>
+      <a href="#citation">Citation</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <header class="hero wrap">
+      <p class="kicker"><span class="dash" aria-hidden="true"></span> Full-duplex voice agent collaboration</p>
+      <h1>DuplexAgent-RSI</h1>
+      <p class="subtitle">Recursive harness improvement for full-duplex voice agent collaboration</p>
+      <p class="dek">A full-duplex model stays on the live channel, while search, reasoning, and coding are delegated asynchronously. DuplexAgent writes that coordination as six editable modules. Duplex-Harness-RSI revises them from timed conversations whose failures name which module to repair: the Exam Planner selects the next tests from observed weaknesses and the repair archive, and the Harness Editor proposes the change. The loop outperforms the initial harness and repeated editing without that diagnosis, while spoken knowledge and executable tool use improve and interruption response stays strong.</p>
+      <p class="authors">
+        Yingda Shen<sup>*</sup>
+        Yuxiang Wang<sup>*</sup>
+        Kunyu Feng<sup>*</sup>
+        Qinke Ni<sup>*</sup>
+        Jiaqi Li<sup>*†</sup><br>
+        Minghao Hsu<sup>*</sup>
+        Junan Zhang<sup>*</sup>
+        Dekun Chen<sup>*</sup>
+        Yutong Bian<sup>*†</sup>
+        Zhizheng Wu<sup>*†</sup>
+      </p>
+      <p class="affil"><sup>*</sup> The Chinese University of Hong Kong, Shenzhen &nbsp;&nbsp; <sup>†</sup> Amphion Technology</p>
+      <div class="affiliation-row" aria-label="Affiliations">
+        <img src="assets/brand/cuhksz.png" data-logo="cuhksz" alt="The Chinese University of Hong Kong, Shenzhen">
+        <img src="assets/brand/amphion.png" data-logo="amphion" alt="安菲翁科技">
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="#demo">Demo</a>
+        <span class="btn ghost" aria-disabled="true">Tech report coming soon</span>
+        <span class="btn ghost" aria-disabled="true">Code coming soon</span>
+      </div>
+    </header>
+
+    <section id="demo">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 01 &nbsp; Demo</p>
+        <h2>The conversation stays live while the work runs</h2>
+        <p class="lead">The demo shows collaboration with two interaction models, NVIDIA VoiceChat and Qwen-Realtime. While delegated work is running, the conversation stays live. The user can interrupt, cancel, or revise the task at any time, and can keep discussing and revising a long-horizon task.</p>
+        <video class="demo" controls playsinline preload="metadata" poster="assets/demo-poster.jpg?v=20261008">
+          <source src="assets/demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 02 &nbsp; Overview</p>
+        <h2>DuplexAgent executes tasks in a live conversation. RSI improves the harness.</h2>
+        <p class="lead"><strong>DuplexAgent</strong> is a full-duplex collaboration system. The interaction model remains the conversational entry, and a delegation pool of reasoning LLMs and coding agents carries search, reasoning, and coding. Their exchange is written as six editable modules: Policy, Intake, Hold, Worker, Deliver, and Memory. The harness decides what is accepted, which task is current, and when a result may be spoken.</p>
+        <p class="lead"><strong>Duplex-Harness-RSI</strong> revises that harness and leaves the attached models fixed. Separating the modules gives each failure a place to investigate. A reasoning LLM from the same pool is the Exam Planner: it reads attributed failures and the repair archive, then chooses the next exam. A coding agent from the same pool is the Harness Editor and changes the modules the diagnosis names. Paired checks tie each revision to the conversation, so the capabilities that serve the user also improve the harness.</p>
+        <figure class="figure">
+          <img src="assets/overview.png" alt="Diagram of DuplexAgent. The user talks to an interaction model, which hands work to a harness that accepts, tracks, routes, and delivers. The harness sends asynchronous tasks to a delegation pool for search, reasoning, and code. Below, one improvement round runs from a simulator and exam planner through an observer, diagnoser, harness editor, automatic evaluation, and stored experience.">
+          <figcaption><strong>Schematic of DuplexAgent and Duplex-Harness-RSI.</strong></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="harness">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 03 &nbsp; Harness</p>
+        <h2>Six editable modules</h2>
+        <p class="lead">We divide the collaboration path into six modules. A failure can then be attributed to the responsible module, and the repair targets that module. Policy and Intake decide what the user is asking and which live task it concerns. Hold and Deliver protect the conversational rhythm: what the user hears while work is pending, and when a result may be spoken. Worker hands the job to a delegate. Memory keeps the context shared by the conversation and the background work.</p>
+        <div class="mods">
+          <article class="mod policy">
+            <div class="tag">Policy</div>
+            <h3>Answer, delegate, or task control</h3>
+            <p>Instructions, the delegation schema, and routing examples.</p>
+          </article>
+          <article class="mod intake">
+            <div class="tag">Intake</div>
+            <h3>Operation expressed, and which live task</h3>
+            <p>Parsing, control cues, task relations, and resolution rules.</p>
+          </article>
+          <article class="mod hold">
+            <div class="tag">Hold</div>
+            <h3>What the user hears while a task is pending</h3>
+            <p>Receipts, progress timing, and control replies.</p>
+          </article>
+          <article class="mod worker">
+            <div class="tag">Worker</div>
+            <h3>Delegate, context, and result contract</h3>
+            <p>Routing, task instructions, result schemas, and executable overrides.</p>
+          </article>
+          <article class="mod deliver">
+            <div class="tag">Deliver</div>
+            <h3>When and how a current result returns</h3>
+            <p>The speaking window, waiting, and success or failure rendering.</p>
+          </article>
+          <article class="mod memory">
+            <div class="tag">Memory</div>
+            <h3>Context shared by conversation and background work</h3>
+            <p>Turn assembly, retention, compaction, and reset recovery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="session">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 04 &nbsp; A live session</p>
+        <h2>One task, carried by all six modules</h2>
+        <p class="lead">The user asks for a Snake game. A coding agent builds it asynchronously, while the interaction model stays in the conversation. Because the channel is full-duplex, the user can interrupt, cancel, or switch tasks at any moment: here they cancel Snake and ask for Tetris before the first task has finished. The six modules carry that path together.</p>
+        <figure class="figure">
+          <img src="assets/comic.jpg" alt="Six-panel comic. A person asks a small robot to build Snake. While Snake is running the robot stays present. The person cancels Snake and asks for Tetris. A stale Snake result is discarded. Tetris becomes ready and the robot waits for a pause, then says the Tetris game is ready.">
+          <figcaption><strong>A full-duplex collaboration session.</strong> The user requests Snake, then cancels it and asks for Tetris while work is running. The obsolete Snake result is discarded. The current Tetris result returns through the interaction model after the user pauses.</figcaption>
+        </figure>
+        <div class="walk">
+          <article>
+            <div class="n">Request</div>
+            <p><strong>Policy</strong> decides that building the game should be delegated. <strong>Memory</strong> retains the goal.</p>
+          </article>
+          <article>
+            <div class="n">Open</div>
+            <p><strong>Intake</strong> opens the task. <strong>Hold</strong> acknowledges it. <strong>Worker</strong> sends the request and the relevant context to a coding agent.</p>
+          </article>
+          <article>
+            <div class="n">Replace</div>
+            <p>The user cancels Snake and asks for Tetris. <strong>Intake</strong> resolves the cancellation and the replacement against the ledger. <strong>Memory</strong> updates the context. <strong>Hold</strong> acknowledges the change.</p>
+          </article>
+          <article>
+            <div class="n">Late return</div>
+            <p>Snake comes back after it has been replaced. The result is recorded, but it cannot be delivered, and it cannot make Snake current again.</p>
+          </article>
+          <article>
+            <div class="n">Speak</div>
+            <p>When Tetris is ready, <strong>Deliver</strong> waits for a speaking window and returns that result through the interaction model. The six modules cooperate over time, rather than acting as independent stages.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="simulator">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 05 &nbsp; Simulator</p>
+        <h2>Tests that say which module failed</h2>
+        <p class="lead">A request type fixes the capability and the allowed route. An interaction pattern fixes what happens while that request is in flight: refinement, cancellation, overlap, delay. Wording and audio change only after the expected behaviour is fixed, so a failure still points at a module.</p>
+        <figure class="figure">
+          <img src="assets/simulator.png" alt="Simulator diagram. Experience feeds an exam planner, which selects a cell in a grid of request types against interaction patterns. A selected cell is compiled into a timed test, then varied with acoustic conditions, speech rendering, and spoken paraphrases to form a corpus.">
+          <figcaption><strong>Test-conversation construction.</strong> The Exam Planner selects coverage over request types, interaction patterns, and input conditions. Content generation and deterministic temporal composition produce a corpus with explicit expectations. Speech rendering and acoustic augmentation turn it into timed audio input.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 06 &nbsp; Results</p>
+        <h2>Stronger on spoken knowledge, tool use, and interruption</h2>
+        <div class="prose">
+          <p>DuplexAgent leads the other collaboration systems on all three capabilities, and those systems use the same delegation LLM. Spoken knowledge is measured by MMSU, executable tool use by BFCL parallel-multiple and FDB-v3 Pass@1, and duplex timing by FDB-v1 interrupt takeover. On a fixed attachment it also scores above the interaction model alone and above Qwen-Audio-Agent. A direct question stays a spoken answer. A tool request stays an executable call, with its arguments passed through rather than replaced by a title.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/leaderboard.png" alt="Four bar charts of delegated systems. DuplexAgent leads MMSU at 82.7, BFCL parallel-multiple at 78.0, FDB-v3 Pass at 1 at 49.0, and FDB-v1 interrupt takeover at 97.0.">
+          <figcaption>Benchmark results for DuplexAgent (blue), compared with other collaboration systems (gray). Higher is better on every panel. Intelligence reports MMSU accuracy, agentic tool use reports BFCL parallel-multiple and FDB-v3 Pass@1, and duplex reports FDB-v1 interrupt TOR. DuplexAgent is stronger on all three capabilities. All collaboration systems use the same delegation LLM.</figcaption>
+        </figure>
+        <figure class="figure" style="margin-top:14px">
+          <img src="assets/gains.png" alt="Grouped bar charts for VoiceChat and Qwen-Realtime. On each attachment, grey is the interaction model alone, lavender is Qwen-Audio-Agent, and purple is DuplexAgent, on BFCL average, FDB-v3 Pass at 1, OBQA, and MMSU.">
+          <figcaption>DuplexAgent scores above its standalone interaction model and above Qwen-Audio-Agent on the same attachment.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="rsi">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> 07 &nbsp; Duplex-Harness-RSI</p>
+        <h2>Recursive self-improvement (RSI) keeps raising performance</h2>
+        <div class="prose">
+          <p>Duplex-Harness-RSI improves the harness on its own, and the gain is large. On the same VoiceChat exams it clearly outperforms the initial harness, a single pooled revision, and ten revisions that replay those exams without using what earlier rounds learned. Each round starts from the harness already kept, finds the failures that remain, and edits the module responsible. A change stays only when the checks support it, so the next round can build on a better harness. Performance keeps rising. The clearest gain is that the system now takes on the delegated work it used to miss.</p>
+          <p>The same self-improvement holds on Qwen-Realtime. Retained versions steadily raise the collaboration score. Each kept version is stronger than the one before it, so the loop can continue to improve the harness rather than stop after one edit.</p>
+        </div>
+        <figure class="figure">
+          <img src="assets/voicechat-rsi-ablation.png" alt="VoiceChat harness ablation on the fixed core. Left: collaboration score Q from 54.6 for the initial harness and Qwen-Audio-Agent to 57.4 for one-shot editing, 61.9 for sequential editing, and 85.3 for RSI r10. Right: failure rates, with missed delegation falling from 30.3 percent to 1.3 percent.">
+          <figcaption>VoiceChat harness ablation on the fixed core. The left panel is the collaboration score <em>Q</em>, and the right panel is the rate of each diagnostic failure. Duplex-Harness-RSI scores higher than one-shot or sequential editing.</figcaption>
+        </figure>
+        <figure class="figure" style="margin-top:14px">
+          <img src="assets/rsi-qwen.png" alt="Line chart of Duplex-Harness-RSI on Qwen-Realtime. Retained versions raise the collaboration score on the fixed core from 47.1 at g0 to 84.8 at g8.">
+          <figcaption>Duplex-Harness-RSI on Qwen-Realtime. Retained versions raise the collaboration score on the fixed core from the initial harness <em>g</em><sub>0</sub> to <em>g</em><sub>8</sub>.</figcaption>
+        </figure>
+
+        <h2 style="margin-top:36px">What the modules changed</h2>
+        <p class="lead">These are the repairs the loop kept. Each one fixes the failure a round found, and together they raise the harness from the version the campaign started with.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Module</th><th>Rule before repair</th><th>Rule after repair</th><th>Recorded local evidence</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Policy<sup>†</sup></td><td>Conversational and familiar-fact turns are routed too broadly.</td><td>State the direct-answer categories explicitly, while still delegating requests that need additional capability.</td><td>Extra calls reduced by 50%.</td></tr>
+              <tr><td>Intake<sup>*</sup></td><td>A late cancellation can be treated as work that has already completed.</td><td>Resolve the cancellation against live task state, and apply the same control handling to replacement preambles.</td><td>Ignored cancellations reduced by 81%. Replacements reduced by 65%, then by 83.3%.</td></tr>
+              <tr><td>Hold<sup>†</sup></td><td>Pending work does not receive a timely progress update.</td><td>Report progress earlier, and keep receipts brief and compatible with the adapter.</td><td>Missing progress updates reduced by 75%.</td></tr>
+              <tr><td>Worker<sup>*</sup></td><td>Conversions skip the required calculation, or reformulate output that was already verified.</td><td>Preserve the requested units and precision, calculate when the request requires it, and retain verified result content.</td><td>Wrong answers reduced by 66.7%.</td></tr>
+              <tr><td>Deliver<sup>*</sup></td><td>Completion can start speech during the user’s turn, and an inability to execute is reported as success.</td><td>Speak only once the user is silent, and distinguish unsuccessful execution from a successful answer.</td><td>Overlaps reduced by 100% on both attachments. Concealed failures reduced by 100%.</td></tr>
+              <tr><td>Memory<sup>*</sup></td><td>Delegation is correct, but the delegate receives an incomplete question or missing context.</td><td>Assemble the complete user turn, and retain the context that a delegated request needs.</td><td>Missing-context failures reduced by 60%.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="stat-note"><sup>*</sup> VoiceChat &nbsp;&nbsp; <sup>†</sup> Qwen-Realtime</p>
+      </div>
+    </section>
+
+    <section id="citation">
+      <div class="wrap">
+        <p class="kicker"><span class="dash" aria-hidden="true"></span> Citation</p>
+        <h2>Technical report</h2>
+        <p class="lead">Citation details will be updated if the report is released as a preprint.</p>
+        <div class="cite">
+          <button class="copy" type="button" id="copy">Copy</button>
+          <pre id="bibtex">@misc{shen2026duplexagent,
+  title  = {DuplexAgent-RSI: Recursive Harness Improvement for Full-Duplex Voice Agent Collaboration},
+  author = {Shen, Yingda and Wang, Yuxiang and Feng, Kunyu and Ni, Qinke and Li, Jiaqi and Hsu, Minghao and Zhang, Junan and Chen, Dekun and Bian, Yutong and Wu, Zhizheng},
+  year   = {2026},
+  note   = {Technical report}
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p>DuplexAgent is a research project by The Chinese University of Hong Kong, Shenzhen and Amphion Technology. This page is maintained by the authors.</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("copy").addEventListener("click", async function () {
+      var text = document.getElementById("bibtex").innerText;
+      var button = this;
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = "Copied";
+      } catch (err) {
+        button.textContent = "Copy failed";
+      }
+      setTimeout(function () { button.textContent = "Copy"; }, 1600);
+    });
+  </script>
+</body>
+</html>
